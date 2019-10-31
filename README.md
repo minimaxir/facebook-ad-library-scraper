@@ -32,9 +32,7 @@ This script outputs three CSV files in an ideal format to be analyzed with Excel
 * `fb_ads_demos.csv`: The unnested demographic distributions of people reached by ads, which can be mapped to `fb_ads.csv` via the `ad_id` field.
 * `fb_ads_regions.csv`: The unnested region distributions of people reached by ads, which can be mapped to `fb_ads.csv` via the `ad_id` field.
 
-You can view an example of 100 ads from querying `aoc` in the `/examples` folder.
-  
-## Helpful Notes
+You can view an example of the three CSV files resulting from 100 ads by querying `aoc`, in the `examples` folder.
 
 ## Maintainer/Creator
 
