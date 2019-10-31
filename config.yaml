@@ -1,13 +1,16 @@
 # This access_token is a User access token w/ permission to access API
 access_token: <FILL IN>
 
-page_total: 5   # Should be a maximum of 1,000
-search_total: 25   # You can query a maximum of 5,000 ads
+page_total: 100   # Should be a maximum of 1,000
+search_total: 1000   # You can query a maximum of 5,000 ads
+
+ad_active_status: ACTIVE   # ACTIVE, INACTIVE, or ALL
 
 # You can provide search terms and/or page IDs.
-search_terms: clinton
-page_ids:
-  # -
+search_terms: donald trump
+# search_page_ids:   # Max 10 pages
+#   - !!str 153080620724   # page_ids should be str, not int
+#   - !!str 416707608450706
 
 # Fields for querying all possible metadata from the API
 query_fields:

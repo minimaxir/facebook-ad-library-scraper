@@ -14,7 +14,9 @@ params = {
     'access_token': config['access_token'],
     'ad_type': 'POLITICAL_AND_ISSUE_ADS',
     'ad_reached_countries': "['US']",
+    'ad_active_status': config['ad_active_status'],
     'search_terms': config.get('search_terms'),
+    'search_page_ids': ",".join(config.get('search_page_ids', [])),
     'fields': ",".join(config['query_fields']),
     'limit': config['page_total']
 }
