@@ -2,14 +2,12 @@
 access_token: <FILL IN>
 
 page_total: 5   # Should be a maximum of 1,000
-search_total: 5   # You can query a maximum of 5,000 ads
+search_total: 25   # You can query a maximum of 5,000 ads
 
 # You can provide search terms and/or page IDs.
-search_terms: donald trump
+search_terms: clinton
 page_ids:
   # -
-
-# Output configuration: you likely do not need to change these.
 
 # Fields for querying all possible metadata from the API
 query_fields:
@@ -46,3 +44,15 @@ output_fields:
   - spend_min
   - spend_max
   - ad_url
+
+# Fields for the unnested CSVs
+demo_fields:
+  - ad_id
+  - age
+  - gender
+  - percentage
+
+region_fields:
+  - ad_id
+  - region
+  - percentage
