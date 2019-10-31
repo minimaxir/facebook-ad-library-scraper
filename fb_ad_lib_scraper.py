@@ -37,7 +37,12 @@ for _ in range(int(config['search_total'] / config['page_total'])):
         ad_id = re.search(r'\d+', ad['ad_snapshot_url']).group(0)
         ad_url = 'https://www.facebook.com/ads/library/?id=' + ad_id
         ad.update({'ad_id': ad_id,
-                   'ad_url': ad_url})
+                   'ad_url': ad_url,
+                   'impressions_min': ad['impressions']['lower_bound'],
+                   'impressions_max': ad['impressions']['upper_bound'],
+                   'spend_min': ad['spend']['lower_bound'],
+                   'spend_max': ad['spend']['upper_bound'],
+                   })
         w1.writerow(ad)
         pbar.update()
     params.update({'after': data['paging']['cursors']['after']})
