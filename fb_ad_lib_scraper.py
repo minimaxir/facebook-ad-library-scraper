@@ -1,6 +1,7 @@
 import yaml
 import requests
 import csv
+import re
 
 with open('config.yaml', 'r') as f:
     config = yaml.safe_load(f)
@@ -23,4 +24,11 @@ with open('fb_ads.csv', 'w') as f1:
                      params=params)
     data = r.json()
     for ad in data['data']:
+        # The ad_id is encoded in the ad snapshot URL
+        # and cannot be accessed as a normal field. (?!?!)
+
+        ad_id = re.search(r'\d+', ad['ad_snapshot_url']).group(0)
+        ad_url = 'https://www.facebook.com/ads/library/?id=' + ad_id
+        ad.update({'ad_id': ad_id,
+                   'ad_url': ad_url})
         w1.writerow(ad)

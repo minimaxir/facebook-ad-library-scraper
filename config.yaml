@@ -45,3 +45,4 @@ output_fields:
   - impressions_max
   - spend_min
   - spend_max
+  - ad_url
