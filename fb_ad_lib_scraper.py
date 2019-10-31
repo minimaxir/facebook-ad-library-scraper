@@ -15,20 +15,23 @@ params = {
     'limit': config['page_total']
 }
 
-with open('fb_ads.csv', 'w') as f1:
-    w1 = csv.DictWriter(f1, fieldnames=config['output_fields'],
-                        extrasaction='ignore')
-    w1.writeheader()
+f1 = open('fb_ads.csv', 'w')
 
-    r = requests.get('https://graph.facebook.com/v5.0/ads_archive',
-                     params=params)
-    data = r.json()
-    for ad in data['data']:
-        # The ad_id is encoded in the ad snapshot URL
-        # and cannot be accessed as a normal field. (?!?!)
+w1 = csv.DictWriter(f1, fieldnames=config['output_fields'],
+                    extrasaction='ignore')
+w1.writeheader()
 
-        ad_id = re.search(r'\d+', ad['ad_snapshot_url']).group(0)
-        ad_url = 'https://www.facebook.com/ads/library/?id=' + ad_id
-        ad.update({'ad_id': ad_id,
-                   'ad_url': ad_url})
-        w1.writerow(ad)
+r = requests.get('https://graph.facebook.com/v5.0/ads_archive',
+                 params=params)
+data = r.json()
+for ad in data['data']:
+    # The ad_id is encoded in the ad snapshot URL
+    # and cannot be accessed as a normal field. (?!?!)
+
+    ad_id = re.search(r'\d+', ad['ad_snapshot_url']).group(0)
+    ad_url = 'https://www.facebook.com/ads/library/?id=' + ad_id
+    ad.update({'ad_id': ad_id,
+               'ad_url': ad_url})
+    w1.writerow(ad)
+
+f1.close()
