@@ -1,0 +1,31 @@
+# This access_token is a User access token w/ permission to access API
+access_token: <FILL IN>
+
+page_total: 1   # Should be a maximum of 1,000
+search_total: 5   # You can query a maximum of 5,000 ads
+
+# You can provide a search query *or* page IDs.
+search_terms: donald trump
+page_ids:
+  # -
+
+# Output configuration: you likely do not need to change these.
+
+# Fields for querying all possible metadata from the API
+
+query_fields:
+  - ad_creation_time
+  - ad_creative_body
+  - ad_creative_link_caption
+  - ad_creative_link_description
+  - ad_creative_link_title
+  - ad_delivery_start_time
+  - ad_delivery_stop_time
+  - ad_snapshot_url
+  - demographic_distribution
+  - funding_entity
+  - impressions
+  - page_id
+  - page_name
+  - region_distribution
+  - spend
