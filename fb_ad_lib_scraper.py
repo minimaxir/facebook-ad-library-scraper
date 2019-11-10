@@ -68,6 +68,11 @@ for _ in range(int(config['search_total'] / config['page_total'])):
 
         w1.writerow(ad)
         pbar.update()
+
+    # if we have scraped all the ads, exit
+    if 'paging' not in data:
+        break
+
     params.update({'after': data['paging']['cursors']['after']})
 
 f1.close()
