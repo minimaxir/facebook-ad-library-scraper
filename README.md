@@ -16,7 +16,7 @@ If you have done so, install the Python package requirements via `pip`:
 pip3 install requests tqdm
 ```
 
-You configure the rest of the script via `config.yaml`. Go to https://developers.facebook.com/tools/explorer/ to get a User Access Token, and fill it in with your token (it expires after a few hours). Change other parameters as necessary.
+You configure the rest of the script via `config.yaml`. Go to https://developers.facebook.com/tools/explorer/ to get a User Access Token, and fill it in with your token (it normally expires after a few hours but you can extend it to a 2 month token via the [Access Token Debugger](https://developers.facebook.com/tools/debug/accesstoken/)). Change other parameters as necessary.
 
 You can run the scraper script via:
 
