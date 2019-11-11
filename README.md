@@ -1,6 +1,6 @@
 # facebook-ad-library-scraper
 
-A Python scraper for the Facebook Ad Library, using the official [Facebook Ad Library API](https://www.facebook.com/ads/library/api/). This tool will **ONLY** work for users who have been approved for access to the API via Facebook. This scraper also performs cleaning to make the data easier to analyze and work around very strange data encoding decisions.
+A Python scraper for the Facebook Ad Library, using the official [Facebook Ad Library API](https://www.facebook.com/ads/library/api/). This tool will **ONLY** work for users who have been approved for access to the API via Facebook. This scraper also performs cleaning to make the data easier to analyze and work around very strange data encoding decisions (e.g. the script will impute 0 for missing demographics and regions)
 
 The intent of this tool is to help surface adversarial political advertisements on Facebook in light of Facebook's current stances on political ads (currently, Facebook has only opened up the API to support retrieving `POLITICAL_AND_ISSUE_ADS`). It should *only* be used for research and analysis, not for monetary gain. This tool follows the Terms of Use outlined on the API page and does not attempt to circumvent API limitations.
 
@@ -38,7 +38,7 @@ You can view an example of the three CSV files resulting from 100 ads by queryin
 
 Max Woolf ([@minimaxir](https://minimaxir.com))
 
-*Max's open-source projects are supported by his [Patreon](https://www.patreon.com/minimaxir) and GitHub Sponsors. If you found this project helpful, any monetary contributions to the Patreon are appreciated and will be put to good creative use.*
+*Max's open-source projects are supported by his [Patreon](https://www.patreon.com/minimaxir) and [GitHub Sponsors](https://github.com/sponsors/minimaxir). If you found this project helpful, any monetary contributions to the Patreon are appreciated and will be put to good creative use.*
 
 ## License
 

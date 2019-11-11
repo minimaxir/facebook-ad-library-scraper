@@ -3,6 +3,7 @@ import requests
 import csv
 import re
 from tqdm import tqdm
+from itertools import product
 
 with open('config.yaml', 'r') as f:
     config = yaml.safe_load(f)
@@ -21,7 +22,8 @@ params = {
     'limit': config['page_total']
 }
 
-STATES = set(config['states'])
+REGIONS = set(config['regions'])
+DEMOS = set(product(config['demo_ages'], config['demo_genders']))
 
 f1 = open('fb_ads.csv', 'w')
 w1 = csv.DictWriter(f1, fieldnames=config['output_fields'],
@@ -52,9 +54,22 @@ for _ in range(int(config['search_total'] / config['page_total'])):
         ad_url = 'https://www.facebook.com/ads/library/?id=' + ad_id
 
         # write to the unnested files
+        demo_set = set()
         for demo in ad['demographic_distribution']:
             demo.update({'ad_id': ad_id})
             w2.writerow(demo)
+            demo_set.add((demo['age'], demo['gender']))
+
+        # Impute a percentage of 0
+        # for demos with insufficient data
+        unused_demos = DEMOS - demo_set
+        for demo in unused_demos:
+            w2.writerow({
+                'ad_id': ad_id,
+                'age': demo[0],
+                'gender': demo[1],
+                'percentage': 0
+            })
 
         region_set = set()
         for region in ad['region_distribution']:
@@ -64,11 +79,11 @@ for _ in range(int(config['search_total'] / config['page_total'])):
 
         # Impute a percentage of 0
         # for states with insufficient data
-        unused_states = STATES - region_set
-        for state in unused_states:
+        unused_regions = REGIONS - region_set
+        for region in unused_regions:
             w3.writerow({
                 'ad_id': ad_id,
-                'region': state,
+                'region': region,
                 'percentage': 0
             })
 
