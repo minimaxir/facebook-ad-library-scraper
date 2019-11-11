@@ -2,12 +2,12 @@
 access_token: <FILL IN>
 
 page_total: 100   # Should be a maximum of 1,000
-search_total: 1000   # You can query a maximum of 5,000 ads
+search_total: 100   # You can query a maximum of 5,000 ads
 
 ad_active_status: ACTIVE   # ACTIVE, INACTIVE, or ALL
 
 # You can provide search terms and/or page IDs.
-search_terms: donald trump
+search_terms: aoc
 # search_page_ids:   # Max 10 pages
 #   - !!str 153080620724   # page_ids should be str, not int
 #   - !!str 416707608450706
@@ -59,3 +59,56 @@ region_fields:
   - ad_id
   - region
   - percentage
+
+states:
+  - Alabama
+  - Arkansas
+  - California
+  - Connecticut
+  - Florida
+  - Georgia
+  - Idaho
+  - Illinois
+  - Indiana
+  - Kansas
+  - Kentucky
+  - Maryland
+  - Massachusetts
+  - Minnesota
+  - Mississippi
+  - Nebraska
+  - New Jersey
+  - New Mexico
+  - New York
+  - North Carolina
+  - Ohio
+  - Oregon
+  - South Carolina
+  - South Dakota
+  - Tennessee
+  - Virginia
+  - Washington
+  - West Virginia
+  - Montana
+  - Pennsylvania
+  - Wisconsin
+  - Alaska
+  - Arizona
+  - Colorado
+  - Delaware
+  - Washington, District of Columbia
+  - Hawaii
+  - Iowa
+  - Louisiana
+  - Maine
+  - Michigan
+  - Missouri
+  - North Dakota
+  - Oklahoma
+  - Rhode Island
+  - Nevada
+  - New Hampshire
+  - Texas
+  - Utah
+  - Vermont
+  - Wyoming

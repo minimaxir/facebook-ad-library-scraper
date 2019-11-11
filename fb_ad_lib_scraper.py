@@ -21,6 +21,8 @@ params = {
     'limit': config['page_total']
 }
 
+STATES = set(config['states'])
+
 f1 = open('fb_ads.csv', 'w')
 w1 = csv.DictWriter(f1, fieldnames=config['output_fields'],
                     extrasaction='ignore')
@@ -54,9 +56,21 @@ for _ in range(int(config['search_total'] / config['page_total'])):
             demo.update({'ad_id': ad_id})
             w2.writerow(demo)
 
+        region_set = set()
         for region in ad['region_distribution']:
             region.update({'ad_id': ad_id})
             w3.writerow(region)
+            region_set.add(region['region'])
+
+        # Impute a percentage of 0
+        # for states with insufficient data
+        unused_states = STATES - region_set
+        for state in unused_states:
+            w3.writerow({
+                'ad_id': ad_id,
+                'region': state,
+                'percentage': 0
+            })
 
         ad.update({'ad_id': ad_id,
                    'ad_url': ad_url,
